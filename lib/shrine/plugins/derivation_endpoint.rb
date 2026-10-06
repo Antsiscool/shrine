@@ -738,7 +738,7 @@ class Shrine
       index = params.index { |param| param.start_with?("signature=") }
       signature = params.delete_at(index).delete_prefix("signature=") if index
 
-      verify_signature("#{path}?#{params.join("&")}", signature&.delete_prefix("signature="))
+      verify_signature("#{path}?#{params.join("&")}", signature)
     end
 
     def verify_signature(string, signature)
